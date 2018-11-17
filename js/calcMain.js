@@ -1,6 +1,9 @@
 window.onload = function calcMain() {
     var count = 0;
-
+    /*
+        Takes a perameter input, checks to see if its no more than 16 characeters long in total, then appends to a STRING
+        The string that is appended will then be shown on a <p> tag within the innerHTML
+    */
     function calc(value) {
         //alert(value);
         if (count <= 16) {
@@ -8,17 +11,25 @@ window.onload = function calcMain() {
             count++;
         }
     }
-
+    /*
+        Takes all the displayed text on the display and uses the eval funtion to evaulate what is shown
+        It then sets that display to the value that was evaulated
+    */
     function equal() {
         document.getElementById("numDisplay").innerHTML = eval(document.getElementById("numDisplay").innerHTML);
     }
-
+    //Sets the display to show nothing, sets the count to zero so more can be typed in
     function clear() {
         if (count >= 1) {
             document.getElementById("numDisplay").innerHTML = '';
             count = 0;
         }
     }
+    /*   
+        All button functions, upon setting its onclick event,
+        depending on the id selected, it will run the calc function 
+        according to its perameter input
+    */
     document.getElementById("one").onclick = function() {
         calc('1')
     };
@@ -64,12 +75,15 @@ window.onload = function calcMain() {
     document.getElementById("dec").onclick = function() {
         calc('.')
     };
+    //maHboD
     document.getElementById("mahbod").onclick = function() {
         calc('mahbod')
     };
+    //Clears the display
     document.getElementById("clear").onclick = function() {
         clear()
     };
+    //Runs the evaluate function and displays the resualt
     document.getElementById("equal").onclick = function() {
         equal()
     };
