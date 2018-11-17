@@ -88,20 +88,24 @@ window.onload = function calcMain() {
         equal()
     };
     
-  
+    //get context for what the convas element is
   	var canvas = document.getElementById("canvas");
+    //set canvas type to 2D
     var ctx = canvas.getContext("2d");
+    //the line in which the objects will be spawned on
     var spawnLineY = 800;
     var spawnRate = 500;
     var spawnRateOfDescent = -0.50;
     var lastSpawn = -1;
+    //an empty array for the objects to be appended to draw
     var objects = [];
     var startTime = Date.now();
-    
+    //start animating
   	animate();
-
+    //create and spawn objects randomly
     function spawnRandomObject() {
         var t;
+        //depending on the value of the math.random, spawn a different colored object
         if (Math.random() <= 0.50 && Math.random() >= 0.25) {
             t = "rgb(0, 81, 255, 0.6)";
         } else if (Math.random() <= 0.25) {
@@ -109,17 +113,22 @@ window.onload = function calcMain() {
         } else {
             t = "rgb(255, 42, 77, 0.5)";
         }
+        //create object index, set values
         var object = {
             type: t,
+            //set the x placement
             x: Math.random() * (canvas.width - 30) + 15,
+            //set where the objects will spawn from (the spawnlineY that I created beforehand)
             y: spawnLineY,
+            //set the random size for the bubbles
             r: Math.random() * 35 + 5
         }
         objects.push(object);
     }
 
-
+    //create the animate function
     function animate() {
+        //determines when the next object will spawn
         var time = Date.now();
         if (time > (lastSpawn + spawnRate)) {
             lastSpawn = time;
@@ -131,6 +140,7 @@ window.onload = function calcMain() {
         ctx.moveTo(0, spawnLineY);
         ctx.lineTo(canvas.width, spawnLineY);
         ctx.stroke();
+        //draws the objects, and pushes them up
         for (var i = 0; i < objects.length; i++) {
             var object = objects[i];
             object.y += spawnRateOfDescent;
