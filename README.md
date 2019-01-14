@@ -3,3 +3,6 @@ Very basic calculator I made on my spare time, has neat little background animat
 
 
 Live long and prosper
+
+
+Note: Boostrap is outdated
